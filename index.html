@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
     <title>Peré Sushi - Londrina</title>
     <style>
         /* Reset */
@@ -11,10 +15,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Noto Sans JP", sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+
+            /* background-image: url(img/background.png); */
             background-color: #fdf8f5;
             color: #333;
             line-height: 1.6;
@@ -25,19 +31,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            background: rgba(253, 248, 245, 0.95);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            padding: 1rem 3rem;
         }
 
         header h2 {
             color: #d62828;
             font-weight: 700;
+        }
+
+        header nav {
+            display: flex;
+            gap: 3rem;
         }
 
         header nav ul {
@@ -57,67 +61,86 @@
             color: #d62828;
         }
 
-        /* Hero */
+        /* Layout geral */
         .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 10%;
+            gap: 40px;
+            height: 100vh;
+        }
+
+        /* Parte esquerda (círculo vermelho) */
+        .hero-left .circle-bg {
+            background: #b22222;
+            color: white;
+            width: 650px;
+            height: 650px;
+            border-radius: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 0 5%;
-            position: relative;
-            background: url('japanese-pattern.png') repeat center/200px;
-            /* opcional */
+            align-items: center;
+            text-align: center;
+            padding: 30px;
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #222;
+        .hero-left h1 {
+            font-size: 3.5rem;
+            color: #000;
+            margin-bottom: 15px;
         }
 
-        .hero p {
-            max-width: 500px;
-            margin-bottom: 2rem;
-        }
-
-        .hero button {
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 30px;
-            background: #d62828;
-            color: #fff;
+        .hero-left .subtitle {
             font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .hero-left .desc {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero-left button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             cursor: pointer;
-            transition: 0.3s;
+            font-weight: bold;
+            transition: 0.5s;
         }
 
-        .hero button:hover {
-            background: #a61c1c;
+        .hero-left button:hover {
+            background: #fff;
+            color: #000;
         }
 
-        /* Decorative elements */
-        .circle {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: #d62828;
+        .hero-right {
+            position: relative;
+        }
+
+        .hero-right .brush-bg {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-right .brush-bg::before {
+            content: "";
             position: absolute;
-            right: 10%;
-            top: 20%;
+            top: 4%;
+            left: -40px;
+            width: 700px;
+            height: 700px;
+            background: url("img/brushstroke.png") no-repeat bottom;
+            background-size: contain;
             z-index: -1;
-            opacity: 0.8;
         }
 
-        .square {
-            width: 80px;
-            height: 80px;
-            background: #d62828;
-            position: absolute;
-            left: 5%;
-            bottom: 10%;
-            z-index: -1;
-            opacity: 0.8;
+        .hero-right img {
+            width: 600px;
         }
 
         section {
@@ -126,21 +149,64 @@
 
         #galeria {
             padding: 4rem 2rem;
-            background: #fff;
             text-align: center;
         }
 
-        #galeria h2 {
-            font-size: 2rem;
+        h2 {
+            font-size: 4rem;
             margin-bottom: 2rem;
+        }
+
+        #galeria h2 {
+
             color: #b22222;
             /* vermelho japonês */
         }
 
         .galeria-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 1rem;
+        }
+
+        .foto {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .foto img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        /* efeito escurecer */
+        .foto:hover img {
+            filter: brightness(0.8);
+            transform: scale(1.05);
+        }
+
+        /* overlay com nome */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: right;
+            padding: 0.8rem;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        /* aparece no hover */
+        .foto:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .foto img {
@@ -148,7 +214,6 @@
             height: auto;
             object-fit: cover;
             border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
         }
 
@@ -168,10 +233,40 @@
             transform: translateY(0);
         }
 
+        #sobre .quote {
+            width: 40%;
+            position: relative;
+            font-style: italic;
+            color: #555;
+            /* cinza suave */
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin: 20px 0;
+            padding: 20px 30px;
+        }
+
+        #sobre .quote::before {
+            content: "“";
+            font-size: 5rem;
+            color: #aeaeae;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+
+        #sobre .quote::after {
+            content: "”";
+            font-size: 5rem;
+            color: #aeaeae;
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+
+        }
+
 
         section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+
             color: #d62828;
         }
 
@@ -186,7 +281,7 @@
             padding: 1rem;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            text-align: left;
         }
 
         footer {
@@ -194,6 +289,10 @@
             color: #fff;
             text-align: center;
             padding: 2rem 5%;
+        }
+
+        .ico {
+            width: 32px;
         }
 
         /* Responsividade */
@@ -220,8 +319,25 @@
 <body>
 
     <header>
-        <h2>Peré Sushi</h2>
+        <div class="logo">
+            <img src="img/logo.png" alt="" width="80px">
+        </div>
+
         <nav>
+            <ul>
+                <a target="_blank" href="https://www.instagram.com/peresushii">
+                    <li><img class="ico" src="img/insta.png" alt=""></li>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/peresushii">
+                    <li><img class="ico" src="img/fb.png" alt=""></li>
+                </a>
+                <a target="_blank" href="https://www.tiktok.com/@peresushii">
+                    <li><img class="ico" src="img/tiktok.png" alt=""></li>
+                </a>
+            </ul>
+        </nav>
+        <nav>
+
             <ul>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#cardapio">Cardápio</a></li>
@@ -232,35 +348,70 @@
     </header>
 
     <section class="hero">
-        <div class="circle"></div>
-        <div class="square"></div>
-        <h1>A melhor culinária japonesa de Londrina</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel sapien ut massa auctor fermentum. Cras sed
-            mi vitae libero laoreet luctus. </p>
-        <button>Ver Cardápio</button>
+        <aside class="hero-left">
+            <div class="circle-bg">
+                <h1>O melhor delivery de sushi de Londrina</h1>
+                <p class="subtitle"></p>
+                <p class="desc">O melhor da culinária japonesa em Londrina.<br>
+                    Ingredientes frescos e experiência única.
+                </p>
+                <button>Peça Agora</button>
+            </div>
+        </aside>
+
+        <aside class="hero-right">
+            <div class="brush-bg">
+                <img src="img/plate.png" alt="Prato principal">
+            </div>
+        </aside>
     </section>
+
 
     <section id="galeria">
         <h2>Galeria</h2>
         <div class="galeria-grid">
-            <div class="foto fade-in"><img src="img/galeria1.jpg" alt="Foto 1"></div>
-            <div class="foto fade-in"><img src="img/galeria2.jpg" alt="Foto 2"></div>
-            <div class="foto fade-in"><img src="img/galeria3.jpg" alt="Foto 3"></div>
-            <div class="foto fade-in"><img src="img/galeria4.jpg" alt="Foto 4"></div>
-            <div class="foto fade-in"><img src="img/galeria5.jpg" alt="Foto 5"></div>
-            <div class="foto fade-in"><img src="img/galeria6.jpg" alt="Foto 6"></div>
-            <div class="foto fade-in"><img src="img/galeria7.jpg" alt="Foto 7"></div>
-            <div class="foto fade-in"><img src="img/galeria8.jpg" alt="Foto 8"></div>
-            <div class="foto fade-in"><img src="img/galeria9.jpg" alt="Foto 9"></div>
-            <div class="foto fade-in"><img src="img/galeria10.jpg" alt="Foto 10"></div>
+            <div class="foto fade-in"><img src="img/galeria1.jpg" alt="Foto 1">
+                <div class="overlay">Hot Roll</div>
+            </div>
+
+            <div class="foto fade-in"><img src="img/galeria2.jpg" alt="Foto 2">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria3.jpg" alt="Foto 3">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria4.jpg" alt="Foto 4">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria5.jpg" alt="Foto 5">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria6.jpg" alt="Foto 6">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria7.jpg" alt="Foto 7">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria8.jpg" alt="Foto 8">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria9.jpg" alt="Foto 9">
+                <div class="overlay">Hot Roll</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria10.jpg" alt="Foto 10">
+                <div class="overlay">Hot Roll</div>
+            </div>
         </div>
     </section>
 
 
     <section id="sobre">
         <h2>Sobre Nós</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et nibh nec justo euismod accumsan. Vivamus eu
-            sem at elit faucibus gravida. Suspendisse a nunc at felis facilisis mattis. </p>
+        <blockquote class="quote">
+            Nosso delivery nasceu para levar a verdadeira experiência da culinária japonesa até você. Cada prato é
+            preparado com atenção e ingredientes frescos, embalado com cuidado e entregue com dedicação. Nossa
+            missão é simples: encantar pelo sabor, respeitando a tradição e a qualidade em cada detalhe.
+        </blockquote>
     </section>
 
     <section id="cardapio">
