@@ -65,10 +65,10 @@
         .hero {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: self-end;
             padding: 60px 10%;
-            gap: 40px;
-            height: 100vh;
+    
+            min-height: 80vh;
         }
 
         /* Parte esquerda (círculo vermelho) */
@@ -87,6 +87,7 @@
         }
 
         .hero-left h1 {
+            line-height: 3.3rem;
             font-size: 3.5rem;
             color: #000;
             margin-bottom: 15px;
@@ -130,39 +131,35 @@
         .hero-right .brush-bg::before {
             content: "";
             position: absolute;
-            top: 4%;
-            left: -40px;
+            top: -7rem;
+            left: -10px;
             width: 700px;
             height: 700px;
-            background: url("img/brushstroke.png") no-repeat bottom;
+            background: url("img/brushstroke.png") no-repeat;
             background-size: contain;
             z-index: -1;
         }
 
         .hero-right img {
-            width: 600px;
+            width: 710px;
         }
 
         section {
-            padding: 5rem 5%;
+            padding: 5rem;
         }
 
         #galeria {
-            padding: 4rem 2rem;
+            padding: 8rem 3rem;
             text-align: center;
         }
 
         h2 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-        }
-
-        #galeria h2 {
-
             color: #b22222;
-            /* vermelho japonês */
+            font-size: 4rem;
+            margin-bottom: 2.5rem;
         }
 
+       
         .galeria-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -232,16 +229,19 @@
             opacity: 1;
             transform: translateY(0);
         }
+        #sobre {
+            text-align: center;
+        }
 
         #sobre .quote {
-            width: 40%;
+            width: 70%;
             position: relative;
             font-style: italic;
             color: #555;
             /* cinza suave */
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             line-height: 1.6;
-            margin: 20px 0;
+            margin: 20px auto;
             padding: 20px 30px;
         }
 
@@ -265,10 +265,7 @@
         }
 
 
-        section h2 {
-
-            color: #d62828;
-        }
+       
 
         .grid {
             display: grid;
@@ -294,6 +291,8 @@
         .ico {
             width: 32px;
         }
+
+        
 
         /* Responsividade */
         @media (max-width: 768px) {
@@ -355,8 +354,13 @@
                 <p class="desc">O melhor da culinária japonesa em Londrina.<br>
                     Ingredientes frescos e experiência única.
                 </p>
-                <button>Peça Agora</button>
+                <a href="https://wa.me/5543991869536?text=Olá%2C+gostaria+de+fazer+um+pedido"><button>Peça
+                        Agora</button></a>
             </div>
+            
+        <div id="pere-jp">
+            <img src="img/pere-jp.png" alt="" width="100px">
+        </div>
         </aside>
 
         <aside class="hero-right">
@@ -364,6 +368,7 @@
                 <img src="img/plate.png" alt="Prato principal">
             </div>
         </aside>
+       
     </section>
 
 
@@ -406,12 +411,15 @@
 
 
     <section id="sobre">
-        <h2>Sobre Nós</h2>
-        <blockquote class="quote">
-            Nosso delivery nasceu para levar a verdadeira experiência da culinária japonesa até você. Cada prato é
-            preparado com atenção e ingredientes frescos, embalado com cuidado e entregue com dedicação. Nossa
-            missão é simples: encantar pelo sabor, respeitando a tradição e a qualidade em cada detalhe.
-        </blockquote>
+        <div>
+            <h2>Sobre Nós</h2>
+            <blockquote class="quote">
+                Nosso delivery nasceu para levar a <strong>verdadeira experiência da culinária japonesa tradicional</strong> até você. <br>Cada prato é
+                preparado com atenção e ingredientes frescos, embalado com <strong>cuidado</strong> e entregue com <strong>dedicação</strong>. Nossa
+                missão é simples: encantar pelo sabor, respeitando a tradição e a qualidade em cada detalhe.
+            </blockquote>
+        </div>
+
     </section>
 
     <section id="cardapio">
@@ -479,81 +487,74 @@
                 <p>R$16,00 Skin</p>
             </div>
 
+            <div class="card">
+                <h3>Barca Especial do Chef - 150 pcs</h3>
+                <p><strong>R$250,00</strong></p>
+                <p>30 Hot Roll (Salmão)</p>
+                <p>16 Califórnia</p>
+                <p>20 Romeu & Julieta</p>
+                <p>16 Filadélfia</p>
+                <p>16 Verdura</p>
+                <p>16 Patê</p>
+                <p>8 Kani</p>
+                <p>8 Kapemaki (Pepino)</p>
+                <p>8 Skin</p>
+                <p>5 Onigiri Misto</p>
+                <p>5 Gunkan Ichigo</p>
+                <p>6 Nigiri Misto</p>
+                <p>Sashimi (Atum/Salmão)</p>
+            </div>
+
+            <div class="card">
+                <h3>Barca G Premium - 95 pcs</h3>
+                <p><strong>R$180,00</strong></p>
+                <p>20 Hot Roll (Salmão)</p>
+                <p>16 Califórnia</p>
+                <p>8 Filadélfia</p>
+                <p>8 Patê</p>
+                <p>8 Verdura</p>
+                <p>6 Onigiri Misto</p>
+                <p>10 Gunkan Ichigo</p>
+                <p>Sashimi (Atum)</p>
+            </div>
+
+            <div class="card">
+                <h3>Barca M Premium - 78 pcs</h3>
+                <p><strong>R$160,00</strong></p>
+                <p>20 Hot Roll (Salmão)</p>
+                <p>16 Califórnia</p>
+                <p>8 Filadélfia</p>
+                <p>8 Patê</p>
+                <p>8 Verdura</p>
+                <p>5 Onigiri Misto</p>
+                <p>5 Gunkan Ichigo</p>
+                <p>Sashimi (Salmão)</p>
+            </div>
+
+            <div class="card">
+                <h3>Barca P Premium - 60 pcs</h3>
+                <p><strong>R$135,00</strong></p>
+                <p>20 Hot Roll (Salmão)</p>
+                <p>8 Califórnia</p>
+                <p>8 Filadélfia</p>
+                <p>8 Verdura</p>
+                <p>6 Onigiri Misto</p>
+                <p>5 Gunkan Ichigo</p>
+                <p>Sashimi (Salmão)</p>
+            </div>
+
+            <div class="card">
+                <h3>Combo Grande - 50 pcs</h3>
+                <p><strong>R$95,00</strong></p>
+                <p>20 Hot Roll (Salmão)</p>
+                <p>8 Califórnia</p>
+                <p>8 Filadélfia</p>
+                <p>3 Verdura</p>
+                <p>5 Onigiri Misto</p>
+                <p>3 Gunkan Ichigo</p>
+            </div>
         </div>
 
-        <section id="barcas">
-            <h2>Barcas Especiais</h2>
-            <div class="grid">
-
-                <div class="card">
-                    <h3>Barca Especial do Chef - 150 pcs</h3>
-                    <p><strong>R$250,00</strong></p>
-                    <p>30 Hot Roll (Salmão)</p>
-                    <p>16 Califórnia</p>
-                    <p>20 Romeu & Julieta</p>
-                    <p>16 Filadélfia</p>
-                    <p>16 Verdura</p>
-                    <p>16 Patê</p>
-                    <p>8 Kani</p>
-                    <p>8 Kapemaki (Pepino)</p>
-                    <p>8 Skin</p>
-                    <p>5 Onigiri Misto</p>
-                    <p>5 Gunkan Ichigo</p>
-                    <p>6 Nigiri Misto</p>
-                    <p>Sashimi (Atum/Salmão)</p>
-                </div>
-
-                <div class="card">
-                    <h3>Barca G Premium - 95 pcs</h3>
-                    <p><strong>R$180,00</strong></p>
-                    <p>20 Hot Roll (Salmão)</p>
-                    <p>16 Califórnia</p>
-                    <p>8 Filadélfia</p>
-                    <p>8 Patê</p>
-                    <p>8 Verdura</p>
-                    <p>6 Onigiri Misto</p>
-                    <p>10 Gunkan Ichigo</p>
-                    <p>Sashimi (Atum)</p>
-                </div>
-
-                <div class="card">
-                    <h3>Barca M Premium - 78 pcs</h3>
-                    <p><strong>R$160,00</strong></p>
-                    <p>20 Hot Roll (Salmão)</p>
-                    <p>16 Califórnia</p>
-                    <p>8 Filadélfia</p>
-                    <p>8 Patê</p>
-                    <p>8 Verdura</p>
-                    <p>5 Onigiri Misto</p>
-                    <p>5 Gunkan Ichigo</p>
-                    <p>Sashimi (Salmão)</p>
-                </div>
-
-                <div class="card">
-                    <h3>Barca P Premium - 60 pcs</h3>
-                    <p><strong>R$135,00</strong></p>
-                    <p>20 Hot Roll (Salmão)</p>
-                    <p>8 Califórnia</p>
-                    <p>8 Filadélfia</p>
-                    <p>8 Verdura</p>
-                    <p>6 Onigiri Misto</p>
-                    <p>5 Gunkan Ichigo</p>
-                    <p>Sashimi (Salmão)</p>
-                </div>
-
-                <div class="card">
-                    <h3>Combo Grande - 50 pcs</h3>
-                    <p><strong>R$95,00</strong></p>
-                    <p>20 Hot Roll (Salmão)</p>
-                    <p>8 Califórnia</p>
-                    <p>8 Filadélfia</p>
-                    <p>3 Verdura</p>
-                    <p>5 Onigiri Misto</p>
-                    <p>3 Gunkan Ichigo</p>
-                </div>
-
-            </div>
-        </section>
 
     </section>
 
@@ -566,9 +567,9 @@
 
     <section id="contato">
         <h2>Contato</h2>
-        <p>📍 Rua Exemplo, 123 - Londrina/PR</p>
-        <p>📞 (43) 99999-9999</p>
-        <p>📱 WhatsApp: (43) 98888-8888</p>
+        <p>(43) 99186-9536</p>
+        <p><a href="https://wa.me/5543991869536">WhatsApp</a></p>
+        <p>info@peresushi.com.br</p>
     </section>
 
     <footer>
@@ -582,7 +583,6 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        // adiciona delay incremental (0.1s, 0.2s, 0.3s...)
                         entry.target.style.transitionDelay = `${index * 0.1}s`;
                         entry.target.classList.add("visible");
                         observer.unobserve(entry.target);
