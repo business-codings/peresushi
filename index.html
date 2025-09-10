@@ -8,443 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
     <title>Peré Sushi - Londrina</title>
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Noto Sans JP", sans-serif;
-        }
-
-        body {
-            background-color: #fdfcf8;
-
-            /* camada de ruído */
-            background-image:
-                radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
-                radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-            background-size: 4px 4px, 7px 7px;
-            background-position: 0 0, 3px 3px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 3rem;
-        }
-
-        header h2 {
-            color: #d62828;
-            font-weight: 700;
-        }
-
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
- 
-        .ico:hover {
-            transform: scale(1.2);
-        }
-        header nav a {
-            text-decoration: none;
-            color: #d62828;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #333;
-        }
-
-        /* Layout geral */
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: self-end;
-            padding: 60px 10%;
-
-            min-height: 80vh;
-        }
-
-        /* Parte esquerda (círculo vermelho) */
-        .hero-left .circle-bg {
-            background: #d62828;
-            color: white;
-            width: 650px;
-            height: 650px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .hero-left h1 {
-            line-height: 3.3rem;
-            font-size: 3.5rem;
-            color: #000;
-            margin-bottom: 15px;
-        }
-
-        .hero-left .subtitle {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .hero-left .desc {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .hero-left button {
-            background: black;
-            color: white;
-            font-size: 1.2rem;
-            border: none;
-            padding: 1.2rem 2rem;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.5s;
-        }
-
-        .hero-left button:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        .hero-right {
-            position: relative;
-        }
-
-        .hero-right .brush-bg {
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-right .brush-bg::before {
-            content: "";
-            position: absolute;
-            top: -7rem;
-            left: -10px;
-            width: 700px;
-            height: 700px;
-            background: url("img/brushstroke.webp") no-repeat;
-            background-size: contain;
-            z-index: -1;
-        }
-
-        .hero-right img {
-            width: 710px;
-        }
-
-        section {
-
-            padding: 5rem;
-        }
-
-        #galeria {
-            padding: 8rem 3rem;
-            text-align: center;
-        }
-
-        h2,
-        h4 {
-            color: #b22222;
-            margin: 2.5rem 0;
-        }
-
-        h4 {
-            font-size: 2.6rem;
-        }
-
-        h2 {
-
-            font-size: 4rem;
-
-        }
-
-
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-            gap: 1rem;
-        }
-
-        .foto {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .foto img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-
-        /* efeito escurecer */
-        .foto:hover img {
-            filter: brightness(0.8);
-            transform: scale(1.05);
-        }
-
-        /* overlay com nome */
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            color: #fff;
-            font-size: 1.2rem;
-            text-align: right;
-            padding: 0.8rem;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: all 0.3s ease;
-        }
-
-        /* aparece no hover */
-        .foto:hover .overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .foto img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .foto img:hover {
-            transform: scale(1.05);
-            cursor: pointer;
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #sobre {
-            text-align: center;
-        }
-
-        #sobre .quote {
-            width: 70%;
-            position: relative;
-            font-style: italic;
-            color: #555;
-            /* cinza suave */
-            font-size: 1.4rem;
-            line-height: 1.6;
-            margin: 20px auto;
-            padding: 20px 30px;
-        }
-
-        #sobre .quote::before {
-            content: "“";
-            font-size: 5rem;
-            color: #aeaeae;
-            position: absolute;
-            top: -20px;
-            left: -20px;
-        }
-
-        #sobre .quote::after {
-            content: "”";
-            font-size: 5rem;
-            color: #aeaeae;
-            position: absolute;
-            bottom: -30px;
-            right: -20px;
-
-        }
-
-
-        #cardapio {
-            padding: 5rem;
-            /* background: #fff; */
-            color: #333;
-            max-width: 60%;
-            margin: 0 auto;
-        }
-
-        #cardapio .titulo-cardapio {
-
-            margin-bottom: 3rem;
-
-        }
-
-
-
-        small {
-            font-size: 1.2rem;
-
-            margin-left: .5rem;
-        }
-
-        #cardapio .grid {
-            display: grid;
-            gap: 6rem;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            margin:  5rem 0;
-        }
-
-        #cardapio .card {
-        
-            padding: 0;
-            border-radius: 0;
-        }
-
-        #cardapio h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            padding-bottom: .3rem;
-            border-bottom: 1px solid #aeaeae;
-
-        }
-
-        #cardapio .tag, #cardapio p, #cardapio label  {
-            font-size: 1rem;
-        }
-
-        #cardapio .tag {
-            display: flex;
-            justify-content: space-between;
-            padding: .4rem 0;
-
-        }
-
-        #cardapio .tag label,
-        .one-price label {
-            color: #b22222;
-            font-weight: 600;
-        }
-
-        .card {
-            padding: 1rem;
-            text-align: left;
-            font-size: 1.3rem;
-        }
-
-
-        .one-price {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1.3rem;
-
-        }
-
-        .one-price label {
-            text-align: right;
-        }
-
-        .grid h3 {
-            text-align: justify;
-            margin-bottom: 2rem;
-        }
-
-
-
-
-        footer {
-            background: #222;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 5%;
-        }
-
-
-        .ico {
-            width: 32px;
-            transition: 0.3s;
-        }
-
-        #contato p {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        #contato a::after {
-            position: absolute;
-            width: 0;
-            height: 1.8px;
-            left: 0;
-            bottom: -1.2px;
-            background-color: #000;
-            transition: width 0.5s ease;
-        }
-
-
-        #contato a:hover::after {
-            width: 100%;
-        }
-
-
-
-        a {
-            text-decoration: none;
-            color: #000;
-        }
-
-        #eventos>div {
-            display: flex;
-            flex-direction: row;
-            gap: 3rem;
-        }
-
-        .servico-card {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .servico-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .hero {
-                align-items: center;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -454,7 +19,7 @@
             <img src="img/logo.png" alt="" width="80px">
         </div>
 
-        <nav>
+        <nav id="social">
             <ul>
                 <a target="_blank" href="https://www.instagram.com/peresushii">
                     <li><img class="ico" src="img/insta.png" alt=""></li>
@@ -483,8 +48,7 @@
             <div class="circle-bg">
                 <h1>O melhor delivery de sushi de Londrina</h1>
                 <p class="subtitle"></p>
-                <p class="desc">O melhor da culinária japonesa em Londrina.<br>
-                    Ingredientes frescos e experiência única.
+                <p class="desc">Ingredientes frescos e experiência única.
                 </p>
                 <a href="https://wa.me/5543991869536?text=Olá%2C+gostaria+de+fazer+um+pedido"><button>Peça
                         Agora</button></a>
@@ -495,11 +59,11 @@
             </div>
         </aside>
 
-        <aside class="hero-right">
-            <div class="brush-bg">
-                <img src="img/plate.png" alt="Prato principal">
-            </div>
-        </aside>
+        <div class="hero-prato">
+            <img src="img/brushstroke.webp" alt="Japanese Brush" class="brush">
+            <img src="img/plate.png" alt="Prato de Sushi" class="prato">
+        </div>
+
 
     </section>
 
@@ -509,7 +73,7 @@
         <br><br>
         <div class="galeria-grid">
             <div class="foto fade-in"><img src="img/galeria1.webp" alt="Foto 1">
-                <div class="overlay">Hot Roll</div>
+                <div class="overlay">Amêndoas</div>
             </div>
 
             <div class="foto fade-in"><img src="img/galeria2.webp" alt="Foto 2">
@@ -522,16 +86,16 @@
                 <div class="overlay">Hot Roll</div>
             </div>
             <div class="foto fade-in"><img src="img/galeria5.webp" alt="Foto 5">
-                <div class="overlay">Hot Roll</div>
+                <div class="overlay">Vegetariano</div>
             </div>
             <div class="foto fade-in"><img src="img/galeria6.webp" alt="Foto 6">
-                <div class="overlay">Hot Roll</div>
+                <div class="overlay">Mix de Peixes</div>
             </div>
             <div class="foto fade-in"><img src="img/galeria7.webp" alt="Foto 7">
-                <div class="overlay">Hot Roll</div>
+                <div class="overlay">Hossomaki</div>
             </div>
             <div class="foto fade-in"><img src="img/galeria8.webp" alt="Foto 8">
-                <div class="overlay">Hot Roll</div>
+                <div class="overlay">Kani</div>
             </div>
             <!-- <div class="foto fade-in"><img src="img/galeria9.webp" alt="Foto 9">
                 <div class="overlay">Hot Roll</div>
@@ -555,10 +119,17 @@
             </blockquote>
         </div>
 
+
+
     </section>
 
     <section id="cardapio">
         <h2 class="titulo-cardapio">Cardápio <small>お品書き</small></h2>
+        <div class="red-circle-bg fade-in">
+            <img src="img/cat.png" alt="Cat ramen" class="cat-deco">
+        </div>
+
+
 
         <div class="grid">
 
@@ -703,19 +274,29 @@
 
     <section id="eventos">
         <h2>Eventos <small>イベント</small></h2>
+        <br><br>
         <div>
             <div class="servico-card">
-                <h3>Aniversários</h3>
+                <div class="servico-itens">
+                    <h3>Aniversários</h3>
+                    <img src="img/aniversario.png" alt="">
+                </div>
                 <p>Celebre de forma única! Surpreenda seus convidados com combinados de sushi frescos e pratos
                     especiais, criados para tornar cada aniversário delicioso e cheio de charme japonês.</p>
             </div>
             <div class="servico-card">
-                <h3>Formaturas</h3>
+                <div class="servico-itens">
+                    <h3>Formaturas</h3>
+                    <img src="img/formatura.png" alt="">
+                </div>
                 <p>Comemore conquistas com requinte e sabor. Nossos menus personalizados para formaturas garantem uma
                     experiência gastronômica que vai impressionar e celebrar cada momento especial.</p>
             </div>
             <div class="servico-card">
-                <h3>Corporativo</h3>
+                <div class="servico-itens">
+                    <h3>Corporativo</h3>
+                    <img src="img/corporativo.png" alt="">
+                </div>
 
                 <p>Impressione clientes e equipes com um serviço de delivery premium. Refeições sofisticadas, sabor
                     autêntico e apresentação impecável, perfeitas para reuniões, almoços ou eventos executivos</p>
@@ -734,25 +315,7 @@
         <p>&copy; 2025 Peré Sushi. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const items = document.querySelectorAll(".fade-in, .servico-card");
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.transitionDelay = `${index * 0.1}s`;
-                        entry.target.classList.add("visible");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            items.forEach(item => observer.observe(item));
-        });
-
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

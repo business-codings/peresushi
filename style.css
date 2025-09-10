@@ -1,0 +1,592 @@
+        /* ==================== */
+        /* RESET & BASE         */
+        /* ==================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Noto Sans JP", sans-serif;
+        }
+
+        body {
+            background-color: #fdfcf8;
+
+            /* camada de ruído */
+            background-image:
+                radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 4px 4px, 7px 7px;
+            background-position: 0 0, 3px 3px;
+        }
+
+        /* Limite global em telas enormes */
+        body>* {
+            max-width: 2400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ==================== */
+        /* HEADER               */
+        /* ==================== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+        }
+
+        header h2 {
+            color: #d62828;
+            font-weight: 700;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        header nav a {
+            text-decoration: none;
+            color: #d62828;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #333;
+        }
+
+        .ico {
+            width: 32px;
+            transition: 0.3s;
+        }
+
+        .ico:hover {
+            transform: scale(1.2);
+        }
+
+        /* ==================== */
+        /* HERO SECTION         */
+        /* ==================== */
+        .hero {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 6rem 3rem;
+        }
+
+        /* Parte esquerda */
+        .hero-left .circle-bg {
+            background: #d62828;
+            color: white;
+            width: clamp(250px, 40vw, 600px);
+            height: clamp(250px, 40vw, 600px);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5%;
+            margin: 0 5rem;
+        }
+
+        .hero-left h1 {
+            line-height: 1.2;
+            font-size: clamp(1.5rem, 3vw, 3.5rem);
+            color: #000;
+            margin-bottom: 1rem;
+        }
+
+        .hero-left .subtitle {
+            font-weight: bold;
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-left .desc {
+            font-size: clamp(0.8rem, 1.2vw, 1rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-left button {
+            background: black;
+            color: white;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.5s;
+        }
+
+        .hero-left button:hover {
+            color: #000;
+            background-color: #fff;
+        }
+
+
+        .hero-prato {
+            position: relative;
+            display: inline-block;
+            max-width: 600px;
+            /* limite para não estourar */
+            margin: 0 auto;
+            transform: translateX(-3rem);
+            transform: translateY(10rem);
+        }
+
+        .hero-prato img.brush {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .hero-prato img.prato {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        /* ==================== */
+        /* GALERIA              */
+        /* ==================== */
+        #galeria {
+            padding: 8rem 3rem;
+            text-align: center;
+        }
+
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 0 auto;
+        }
+
+        .foto {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .foto img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Hover effects */
+        .foto:hover img {
+            filter: brightness(0.8);
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: right;
+            padding: 0.8rem;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+
+        .foto:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==================== */
+        /* SOBRE                */
+        /* ==================== */
+
+        #sobre {
+            margin: 3rem 0;
+            text-align: center;
+
+        }
+
+        #sobre .quote {
+            width: 70%;
+            position: relative;
+            font-style: italic;
+            color: #555;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin: 20px auto;
+            padding: 20px 30px;
+        }
+
+        #sobre .quote::before {
+            content: "“";
+            font-size: 5rem;
+            color: #aeaeae;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+
+        #sobre .quote::after {
+            content: "”";
+            font-size: 5rem;
+            color: #aeaeae;
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+        }
+
+        /* ==================== */
+        /* CARDÁPIO             */
+        /* ==================== */
+        #cardapio {
+            position: relative;
+            padding: 5rem;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+
+        /* círculo de fundo */
+        .red-circle-bg {
+            position: absolute;
+            left: -10rem;
+            /* ajusta horizontal */
+            top: 3rem;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(178, 34, 34, 0.1);
+            /* cor de preenchimento do círculo */
+            border-radius: 50%;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* imagem dentro do círculo */
+        .cat-deco {
+            width: 180px;
+            opacity: 0.95;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+
+        #cardapio .titulo-cardapio {
+            margin-bottom: 3rem;
+        }
+
+        #cardapio .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* trava em 2 colunas */
+            gap: 6rem;
+            margin: 5rem 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #cardapio .card {
+            padding: 1rem;
+            border-radius: 0;
+            text-align: left;
+            font-size: 1.3rem;
+        }
+
+        #cardapio h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: .3rem;
+            border-bottom: 1px solid #aeaeae;
+        }
+
+        #cardapio .tag,
+        #cardapio p,
+        #cardapio label {
+            font-size: 1rem;
+        }
+
+        #cardapio .tag {
+            display: flex;
+            justify-content: space-between;
+            padding: .4rem 0;
+        }
+
+        #cardapio .tag label,
+        .one-price label {
+            color: #b22222;
+            font-weight: 600;
+        }
+
+        .one-price {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.3rem;
+        }
+
+        .one-price label {
+            text-align: right;
+        }
+
+        .grid h3 {
+            text-align: justify;
+            margin-bottom: 2rem;
+        }
+
+        small {
+            font-size: 1.2rem;
+            margin-left: .5rem;
+        }
+
+        /* ==================== */
+        /* EVENTOS & CONTATO    */
+        /* ==================== */
+        #sobre,
+        #eventos,
+        #contato {
+            padding: 6rem 3rem;
+        }
+
+        #eventos>div {
+            display: flex;
+            flex-direction: row;
+            gap: 6rem;
+
+        }
+
+        .servico-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .servico-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .servico-itens {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            gap: 2rem
+        }
+
+        .servico-itens img {
+            width: 50px;
+        }
+
+        .servico-itens h3 {
+            font-size: 2rem;
+        }
+
+        #contato p,
+        .servico-card p {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        #contato a::after {
+            position: absolute;
+            width: 0;
+            height: 1.8px;
+            left: 0;
+            bottom: -1.2px;
+            background-color: #000;
+            transition: width 0.5s ease;
+        }
+
+        #contato a:hover::after {
+            width: 100%;
+        }
+
+        /* ==================== */
+        /* FOOTER               */
+        /* ==================== */
+        footer {
+            color: #000;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* ==================== */
+        /* TIPOGRAFIA GLOBAL    */
+        /* ==================== */
+        h2,
+        h4 {
+            color: #b22222;
+            margin: 2.5rem 0;
+        }
+
+        h2 {
+            font-size: 4rem;
+        }
+
+        h4 {
+            font-size: 2.6rem;
+        }
+
+        p,
+        h2,
+        h3,
+        h4,
+        small,
+        .desc,
+        .subtitle {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        /* ==================== */
+        /* MÍDIA RESPONSIVA     */
+        /* ==================== */
+
+        /* Tablets grandes */
+        @media (max-width: 1024px) {
+
+            .red-circle-bg {
+                right: -3rem;
+                /* ajusta horizontal */
+                top: 3rem;
+
+            }
+
+            #eventos>div {
+                flex-wrap: wrap;
+            }
+
+            header nav {
+                display: none;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero-left .circle-bg {
+                position: relative;
+                display: inline-block;
+                max-width: 900px;
+                padding: 4rem;
+            }
+
+
+
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Tablets médios / mobile */
+        @media (max-width: 768px) {
+            .hero-left h1 {
+                font-size: 2rem;
+                line-height: 2.2rem;
+            }
+
+            .hero-left .subtitle {
+                font-size: 16px;
+            }
+
+            .hero-left .desc {
+                font-size: 13px;
+            }
+
+            #cardapio {
+
+                max-width: 90%;
+                padding: 2rem;
+            }
+
+            #cardapio .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #sobre .quote {
+                width: 90%;
+                font-size: 1.1rem;
+                padding: 15px 20px;
+            }
+
+            #eventos>div {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        /* Celulares pequenos */
+        @media (max-width: 480px) {
+           .logo img {
+            width: 60px;
+           }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-left button {
+                padding: 1% 1.5%;
+                font-size: 1rem;
+            }
+
+            .hero-left h1 {
+                font-size: 1.8rem;
+            }
+
+            #sobre .quote::before,
+            #sobre .quote::after {
+                font-size: 3rem;
+            }
+
+            footer {
+                padding: 2rem 2%;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ==================== */
+        /* MÍDIA SEGURA         */
+        /* ==================== */
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
