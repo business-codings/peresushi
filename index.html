@@ -19,12 +19,14 @@
         }
 
         body {
+            background-color: #fdfcf8;
 
-            /* background-image: url(img/background.png); */
-            background-color: #fdf8f5;
-            color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
+            /* camada de ruído */
+            background-image:
+                radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+                radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+            background-size: 4px 4px, 7px 7px;
+            background-position: 0 0, 3px 3px;
         }
 
         header {
@@ -39,26 +41,25 @@
             font-weight: 700;
         }
 
-        header nav {
-            display: flex;
-            gap: 3rem;
-        }
 
         header nav ul {
             list-style: none;
             display: flex;
             gap: 2rem;
         }
-
+ 
+        .ico:hover {
+            transform: scale(1.2);
+        }
         header nav a {
             text-decoration: none;
-            color: #333;
+            color: #d62828;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         header nav a:hover {
-            color: #d62828;
+            color: #333;
         }
 
         /* Layout geral */
@@ -67,13 +68,13 @@
             justify-content: space-between;
             align-items: self-end;
             padding: 60px 10%;
-    
+
             min-height: 80vh;
         }
 
         /* Parte esquerda (círculo vermelho) */
         .hero-left .circle-bg {
-            background: #b22222;
+            background: #d62828;
             color: white;
             width: 650px;
             height: 650px;
@@ -107,8 +108,9 @@
         .hero-left button {
             background: black;
             color: white;
+            font-size: 1.2rem;
             border: none;
-            padding: 10px 20px;
+            padding: 1.2rem 2rem;
             cursor: pointer;
             font-weight: bold;
             transition: 0.5s;
@@ -135,7 +137,7 @@
             left: -10px;
             width: 700px;
             height: 700px;
-            background: url("img/brushstroke.png") no-repeat;
+            background: url("img/brushstroke.webp") no-repeat;
             background-size: contain;
             z-index: -1;
         }
@@ -145,6 +147,7 @@
         }
 
         section {
+
             padding: 5rem;
         }
 
@@ -153,13 +156,23 @@
             text-align: center;
         }
 
-        h2 {
+        h2,
+        h4 {
             color: #b22222;
-            font-size: 4rem;
-            margin-bottom: 2.5rem;
+            margin: 2.5rem 0;
         }
 
-       
+        h4 {
+            font-size: 2.6rem;
+        }
+
+        h2 {
+
+            font-size: 4rem;
+
+        }
+
+
         .galeria-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -229,6 +242,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+
         #sobre {
             text-align: center;
         }
@@ -265,21 +279,92 @@
         }
 
 
-       
+        #cardapio {
+            padding: 5rem;
+            /* background: #fff; */
+            color: #333;
+            max-width: 60%;
+            margin: 0 auto;
+        }
 
-        .grid {
+        #cardapio .titulo-cardapio {
+
+            margin-bottom: 3rem;
+
+        }
+
+
+
+        small {
+            font-size: 1.2rem;
+
+            margin-left: .5rem;
+        }
+
+        #cardapio .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 6rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            margin:  5rem 0;
+        }
+
+        #cardapio .card {
+        
+            padding: 0;
+            border-radius: 0;
+        }
+
+        #cardapio h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: .3rem;
+            border-bottom: 1px solid #aeaeae;
+
+        }
+
+        #cardapio .tag, #cardapio p, #cardapio label  {
+            font-size: 1rem;
+        }
+
+        #cardapio .tag {
+            display: flex;
+            justify-content: space-between;
+            padding: .4rem 0;
+
+        }
+
+        #cardapio .tag label,
+        .one-price label {
+            color: #b22222;
+            font-weight: 600;
         }
 
         .card {
-            background: #fff;
             padding: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: left;
+            font-size: 1.3rem;
         }
+
+
+        .one-price {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.3rem;
+
+        }
+
+        .one-price label {
+            text-align: right;
+        }
+
+        .grid h3 {
+            text-align: justify;
+            margin-bottom: 2rem;
+        }
+
+
+
 
         footer {
             background: #222;
@@ -288,11 +373,58 @@
             padding: 2rem 5%;
         }
 
+
         .ico {
             width: 32px;
+            transition: 0.3s;
         }
 
-        
+        #contato p {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        #contato a::after {
+            position: absolute;
+            width: 0;
+            height: 1.8px;
+            left: 0;
+            bottom: -1.2px;
+            background-color: #000;
+            transition: width 0.5s ease;
+        }
+
+
+        #contato a:hover::after {
+            width: 100%;
+        }
+
+
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        #eventos>div {
+            display: flex;
+            flex-direction: row;
+            gap: 3rem;
+        }
+
+        .servico-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .servico-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
 
         /* Responsividade */
         @media (max-width: 768px) {
@@ -357,10 +489,10 @@
                 <a href="https://wa.me/5543991869536?text=Olá%2C+gostaria+de+fazer+um+pedido"><button>Peça
                         Agora</button></a>
             </div>
-            
-        <div id="pere-jp">
-            <img src="img/pere-jp.png" alt="" width="100px">
-        </div>
+
+            <div id="pere-jp">
+                <img src="img/pere-jp.png" alt="" width="100px">
+            </div>
         </aside>
 
         <aside class="hero-right">
@@ -368,54 +500,57 @@
                 <img src="img/plate.png" alt="Prato principal">
             </div>
         </aside>
-       
+
     </section>
 
 
     <section id="galeria">
-        <h2>Galeria</h2>
+        <h2>Galeria <small>ギャラリー</small></h2>
+        <br><br>
         <div class="galeria-grid">
-            <div class="foto fade-in"><img src="img/galeria1.jpg" alt="Foto 1">
+            <div class="foto fade-in"><img src="img/galeria1.webp" alt="Foto 1">
                 <div class="overlay">Hot Roll</div>
             </div>
 
-            <div class="foto fade-in"><img src="img/galeria2.jpg" alt="Foto 2">
+            <div class="foto fade-in"><img src="img/galeria2.webp" alt="Foto 2">
+                <div class="overlay">Huramaki</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria3.webp" alt="Foto 3">
+                <div class="overlay">Filadélfia</div>
+            </div>
+            <div class="foto fade-in"><img src="img/galeria4.webp" alt="Foto 4">
                 <div class="overlay">Hot Roll</div>
             </div>
-            <div class="foto fade-in"><img src="img/galeria3.jpg" alt="Foto 3">
+            <div class="foto fade-in"><img src="img/galeria5.webp" alt="Foto 5">
                 <div class="overlay">Hot Roll</div>
             </div>
-            <div class="foto fade-in"><img src="img/galeria4.jpg" alt="Foto 4">
+            <div class="foto fade-in"><img src="img/galeria6.webp" alt="Foto 6">
                 <div class="overlay">Hot Roll</div>
             </div>
-            <div class="foto fade-in"><img src="img/galeria5.jpg" alt="Foto 5">
+            <div class="foto fade-in"><img src="img/galeria7.webp" alt="Foto 7">
                 <div class="overlay">Hot Roll</div>
             </div>
-            <div class="foto fade-in"><img src="img/galeria6.jpg" alt="Foto 6">
+            <div class="foto fade-in"><img src="img/galeria8.webp" alt="Foto 8">
                 <div class="overlay">Hot Roll</div>
             </div>
-            <div class="foto fade-in"><img src="img/galeria7.jpg" alt="Foto 7">
+            <!-- <div class="foto fade-in"><img src="img/galeria9.webp" alt="Foto 9">
                 <div class="overlay">Hot Roll</div>
             </div>
-            <div class="foto fade-in"><img src="img/galeria8.jpg" alt="Foto 8">
+            <div class="foto fade-in"><img src="img/galeria10.webp" alt="Foto 10">
                 <div class="overlay">Hot Roll</div>
-            </div>
-            <div class="foto fade-in"><img src="img/galeria9.jpg" alt="Foto 9">
-                <div class="overlay">Hot Roll</div>
-            </div>
-            <div class="foto fade-in"><img src="img/galeria10.jpg" alt="Foto 10">
-                <div class="overlay">Hot Roll</div>
-            </div>
+            </div> -->
         </div>
     </section>
 
 
     <section id="sobre">
         <div>
-            <h2>Sobre Nós</h2>
+            <h2>Sobre Nós <small>私たちについて</small></h2>
             <blockquote class="quote">
-                Nosso delivery nasceu para levar a <strong>verdadeira experiência da culinária japonesa tradicional</strong> até você. <br>Cada prato é
-                preparado com atenção e ingredientes frescos, embalado com <strong>cuidado</strong> e entregue com <strong>dedicação</strong>. Nossa
+                Nosso delivery nasceu para levar a <strong>verdadeira experiência da culinária japonesa
+                    tradicional</strong> até você. <br>Cada prato é
+                preparado com atenção e ingredientes frescos, embalado com <strong>cuidado</strong> e entregue com
+                <strong>dedicação</strong>. Nossa
                 missão é simples: encantar pelo sabor, respeitando a tradição e a qualidade em cada detalhe.
             </blockquote>
         </div>
@@ -423,73 +558,88 @@
     </section>
 
     <section id="cardapio">
-        <h2>Cardápio</h2>
+        <h2 class="titulo-cardapio">Cardápio <small>お品書き</small></h2>
+
         <div class="grid">
 
             <div class="card">
                 <h3>Tradicionais Hossomaki (8 unid)</h3>
-                <p>R$22,00 Verdura</p>
-                <p>R$25,00 Patê de Salmão</p>
+                <div class="tag">Verdura <label>R$22,00</label></div>
+                <div class="tag">Patê de Salmão <label>R$25,00</label></div>
             </div>
 
             <div class="card">
                 <h3>Hot Roll (10 unid)</h3>
-                <p>R$29,00 Salmão</p>
-                <p>R$24,50 Skin</p>
+                <div class="tag">Salmão <label>R$29,00</label></div>
+                <div class="tag">Skin <label>R$24,50</label></div>
             </div>
 
             <div class="card">
                 <h3>Uramaki (10 unid)</h3>
-                <p>R$24,50 Califórnia</p>
-                <p>R$25,50 Romeu & Julieta</p>
-                <p>R$29,50 Filadélfia</p>
-                <p>R$22,00 Kani</p>
-                <p>R$25,00 Filadélfia Especial</p>
+                <div class="items">
+                    <div class="tag">Califórnia <label>R$24,50</label></div>
+                    <div class="tag">Romeu & Julieta <label>R$25,50</label></div>
+                    <div class="tag">Filadélfia <label>R$29,50</label></div>
+                    <div class="tag">Kani <label>R$22,00</label></div>
+                    <div class="tag">Filadélfia Especial <label>R$25,00</label></div>
+                </div>
             </div>
 
             <div class="card">
                 <h3>Acompanhamentos Frios</h3>
-                <p>R$27,50 Temaki</p>
-                <p>R$25,00 Sashimi</p>
-                <p>R$23,00 Ceviche (200g)</p>
-                <p>R$24,00 Joy c/ Salmão (7 unid)</p>
-            </div>
-
-            <div class="card">
-                <h3>Barcas Premium</h3>
-                <p>R$250,00 Barca Especial do Chef (150 pcs)</p>
-                <p>R$180,00 Barca G Premium (95 pcs)</p>
-                <p>R$160,00 Barca M Premium (78 pcs)</p>
-                <p>R$135,00 Barca P Premium (60 pcs)</p>
-                <p>R$95,00 Combo Grande (50 pcs)</p>
+                <div class="tag">Temaki <label>R$27,50</label></div>
+                <div class="tag">Sashimi <label>R$25,00</label></div>
+                <div class="tag">Ceviche (200g) <label>R$23,00</label></div>
+                <div class="tag">Joy c/ Salmão (7 unid) <label>R$24,00</label></div>
             </div>
 
             <div class="card">
                 <h3>Opcionais Hossomaki (8 unid)</h3>
-                <p>R$25,50 Filadélfia</p>
-                <p>R$18,00 Kani c/ Cream Cheese</p>
-                <p>R$18,00 Kapemaki (Pepino)</p>
-                <p>R$21,50 Califórnia</p>
-                <p>R$25,50 Romeu & Julieta</p>
-                <p>R$28,50 Filadélfia Especial</p>
+                <div class="tag">Filadélfia <label>R$25,50</label></div>
+                <div class="tag">Kani c/ Cream Cheese <label>R$18,00</label></div>
+                <div class="tag">Kapemaki (Pepino) <label>R$18,00</label></div>
+                <div class="tag">Califórnia <label>R$21,50</label></div>
+                <div class="tag">Romeu & Julieta <label>R$25,50</label></div>
+                <div class="tag">Filadélfia Especial <label>R$28,50</label></div>
             </div>
 
             <div class="card">
                 <h3>Hot Roll Hossomaki (10 unid)</h3>
-                <p>R$27,00 Salmão</p>
-                <p>R$21,00 Skin</p>
+                <div class="tag">Salmão <label>R$27,00</label></div>
+                <div class="tag">Skin <label>R$21,00</label></div>
             </div>
 
             <div class="card">
                 <h3>Onigiri (7 unid)</h3>
-                <p>R$26,00 Salmão</p>
-                <p>R$16,50 Kani</p>
-                <p>R$16,00 Skin</p>
+                <div class="tag">Salmão <label>R$26,00</label></div>
+                <div class="tag">Kani <label>R$16,50</label></div>
+                <div class="tag">Skin <label>R$16,00</label></div>
             </div>
 
             <div class="card">
-                <h3>Barca Especial do Chef - 150 pcs</h3>
-                <p><strong>R$250,00</strong></p>
+                <div class="one-price">
+                    <h3>Combo Grande - 50 pcs</h3>
+                    <label>R$95,00</label>
+                </div>
+                <p>20 Hot Roll (Salmão)</p>
+                <p>8 Califórnia</p>
+                <p>8 Filadélfia</p>
+                <p>3 Verdura</p>
+                <p>5 Onigiri Misto</p>
+                <p>3 Gunkan Ichigo</p>
+            </div>
+
+        </div>
+
+        <h4>Barcas Premium</h4>
+        </div>
+        <div class="grid">
+
+            <div class="card">
+                <div class="one-price">
+                    <h3>Barca Especial do Chef - 150 pcs</h3>
+                    <label>R$250,00</label>
+                </div>
                 <p>30 Hot Roll (Salmão)</p>
                 <p>16 Califórnia</p>
                 <p>20 Romeu & Julieta</p>
@@ -504,10 +654,11 @@
                 <p>6 Nigiri Misto</p>
                 <p>Sashimi (Atum/Salmão)</p>
             </div>
-
             <div class="card">
-                <h3>Barca G Premium - 95 pcs</h3>
-                <p><strong>R$180,00</strong></p>
+                <div class="one-price">
+                    <h3>Barca G - 95 pcs</h3>
+                    <label>R$180,00</label>
+                </div>
                 <p>20 Hot Roll (Salmão)</p>
                 <p>16 Califórnia</p>
                 <p>8 Filadélfia</p>
@@ -517,10 +668,11 @@
                 <p>10 Gunkan Ichigo</p>
                 <p>Sashimi (Atum)</p>
             </div>
-
             <div class="card">
-                <h3>Barca M Premium - 78 pcs</h3>
-                <p><strong>R$160,00</strong></p>
+                <div class="one-price">
+                    <h3>Barca M - 78 pcs</h3>
+                    <label>R$160,00</label>
+                </div>
                 <p>20 Hot Roll (Salmão)</p>
                 <p>16 Califórnia</p>
                 <p>8 Filadélfia</p>
@@ -530,10 +682,11 @@
                 <p>5 Gunkan Ichigo</p>
                 <p>Sashimi (Salmão)</p>
             </div>
-
             <div class="card">
-                <h3>Barca P Premium - 60 pcs</h3>
-                <p><strong>R$135,00</strong></p>
+                <div class="one-price">
+                    <h3>Barca P - 60 pcs</h3>
+                    <label>R$135,00</label>
+                </div>
                 <p>20 Hot Roll (Salmão)</p>
                 <p>8 Califórnia</p>
                 <p>8 Filadélfia</p>
@@ -542,17 +695,6 @@
                 <p>5 Gunkan Ichigo</p>
                 <p>Sashimi (Salmão)</p>
             </div>
-
-            <div class="card">
-                <h3>Combo Grande - 50 pcs</h3>
-                <p><strong>R$95,00</strong></p>
-                <p>20 Hot Roll (Salmão)</p>
-                <p>8 Califórnia</p>
-                <p>8 Filadélfia</p>
-                <p>3 Verdura</p>
-                <p>5 Onigiri Misto</p>
-                <p>3 Gunkan Ichigo</p>
-            </div>
         </div>
 
 
@@ -560,13 +702,29 @@
 
 
     <section id="eventos">
-        <h2>Eventos & Promoções</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec ligula nec mi fringilla bibendum. Integer
-            bibendum, libero eget tincidunt pharetra, enim lacus accumsan odio, ut porta leo magna a lectus.</p>
+        <h2>Eventos <small>イベント</small></h2>
+        <div>
+            <div class="servico-card">
+                <h3>Aniversários</h3>
+                <p>Celebre de forma única! Surpreenda seus convidados com combinados de sushi frescos e pratos
+                    especiais, criados para tornar cada aniversário delicioso e cheio de charme japonês.</p>
+            </div>
+            <div class="servico-card">
+                <h3>Formaturas</h3>
+                <p>Comemore conquistas com requinte e sabor. Nossos menus personalizados para formaturas garantem uma
+                    experiência gastronômica que vai impressionar e celebrar cada momento especial.</p>
+            </div>
+            <div class="servico-card">
+                <h3>Corporativo</h3>
+
+                <p>Impressione clientes e equipes com um serviço de delivery premium. Refeições sofisticadas, sabor
+                    autêntico e apresentação impecável, perfeitas para reuniões, almoços ou eventos executivos</p>
+            </div>
+        </div>
     </section>
 
     <section id="contato">
-        <h2>Contato</h2>
+        <h2>Contato <small>お問い合わせ</small></h2>
         <p>(43) 99186-9536</p>
         <p><a href="https://wa.me/5543991869536">WhatsApp</a></p>
         <p>info@peresushi.com.br</p>
@@ -578,7 +736,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const items = document.querySelectorAll(".fade-in");
+            const items = document.querySelectorAll(".fade-in, .servico-card");
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
