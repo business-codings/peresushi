@@ -17,9 +17,19 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('menu-toggle');
     const overlay = document.getElementById('menu-overlay');
+    const links = document.querySelectorAll('.menu-links a, .menu-social a');
 
+    // Abre/fecha no clique do botão
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('active');
         overlay.classList.toggle('active');
+    });
+
+    // Fecha ao clicar em qualquer link
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            toggle.classList.remove('active');
+            overlay.classList.remove('active');
+        });
     });
 });
