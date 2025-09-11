@@ -10,8 +10,6 @@
 
         body {
             background-color: #fdfcf8;
-
-            /* camada de ruído */
             background-image:
                 radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
                 radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px);
@@ -33,12 +31,119 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 3rem;
+            padding: 1rem 2rem;
         }
 
         header h2 {
             color: #d62828;
             font-weight: 700;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: relative;
+            z-index: 1000;
+        }
+
+        /* Botão hamburger / X */
+        .menu-toggle {
+            width: 29px;
+            height: 16.8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            z-index: 1100;
+            position: relative;
+            position: fixed;
+            /* <-- fica fixo na tela */
+
+            /* distância do topo */
+            right: 2rem;
+            /* distância da direita */
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            background: #000;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            transform: rotate(-49deg) translate(5px, -5px);
+        }
+
+        /* Overlay fullscreen */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 0;
+            background: rgb(0, 0, 0);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: height 0.4s ease;
+        }
+
+        .menu-toggle.active span {
+            background: #fff;
+        }
+
+        /* Mostrar overlay */
+        .menu-overlay.active {
+            height: 100vh;
+        }
+
+        /* Conteúdo centralizado */
+        .menu-content-full {
+            opacity: 0;
+            transform: translateY(-20px);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .menu-overlay.active .menu-content-full {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .menu-content-full ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .menu-content-full ul li {
+            margin: 15px 0;
+        }
+
+        .menu-links li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        .menu-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .menu-social li img {
+            width: 30px;
+            height: 30px;
         }
 
         header nav ul {
@@ -56,6 +161,10 @@
 
         header nav a:hover {
             color: #333;
+        }
+
+        .mobile-menu .ico {
+            filter: invert(100%);
         }
 
         .ico {
@@ -275,7 +384,7 @@
             position: absolute;
             left: -10rem;
             /* ajusta horizontal */
-            top: 3rem;
+            top: -3rem;
             width: 300px;
             height: 300px;
             background-color: rgba(178, 34, 34, 0.1);
@@ -287,7 +396,14 @@
             justify-content: center;
         }
 
-        /* imagem dentro do círculo */
+        /* 
+        .red-circle-bg-2 {
+            left: auto;
+            top: auto;
+            right: -9rem;
+            bottom: -9rem;
+        } */
+
         .cat-deco {
             width: 180px;
             opacity: 0.95;
@@ -369,7 +485,7 @@
         #sobre,
         #eventos,
         #contato {
-            padding: 6rem 3rem;
+            padding: 6rem 4rem;
         }
 
         #eventos>div {
@@ -396,11 +512,18 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 2rem;
-            gap: 2rem
+            gap: 2rem;
+
         }
 
         .servico-itens img {
-            width: 50px;
+            width: 40px;
+        }
+
+        .servico-itens>div {
+            background-color: #d628286f;
+            padding: 1rem 1.1rem;
+            border-radius: 70%;
         }
 
         .servico-itens h3 {
@@ -409,9 +532,11 @@
 
         #contato p,
         .servico-card p {
-            font-size: 1.4rem;
             margin-bottom: 1rem;
+            color: #333;
+            transition: 0.5s;
         }
+
 
         #contato a::after {
             position: absolute;
@@ -453,7 +578,7 @@
             font-size: 2.6rem;
         }
 
-        p,
+        /* p,
         h2,
         h3,
         h4,
@@ -462,7 +587,7 @@
         .subtitle {
             word-wrap: break-word;
             overflow-wrap: break-word;
-        }
+        } */
 
         a {
             text-decoration: none;
@@ -476,13 +601,6 @@
         /* Tablets grandes */
         @media (max-width: 1024px) {
 
-            .red-circle-bg {
-                right: -3rem;
-                /* ajusta horizontal */
-                top: 3rem;
-
-            }
-
             #eventos>div {
                 flex-wrap: wrap;
             }
@@ -491,15 +609,15 @@
                 display: none;
             }
 
-            .menu {
-                display: block;
+
+            .mobile-menu {
+                display: inline-block;
             }
 
             .hero-left .circle-bg {
                 position: relative;
-                display: inline-block;
                 max-width: 900px;
-                padding: 4rem;
+                padding: 2rem;
             }
 
 
@@ -511,18 +629,80 @@
 
         /* Tablets médios / mobile */
         @media (max-width: 768px) {
-            .hero-left h1 {
-                font-size: 2rem;
-                line-height: 2.2rem;
+
+
+            h2 {
+                font-size: 2.1rem;
             }
 
-            .hero-left .subtitle {
-                font-size: 16px;
+            h3,
+            h4,
+            .servico-itens h3 {
+                font-size: 1.5rem;
+            }
+
+            small {
+                font-size: 18px;
+            }
+
+            .hero {
+                position: relative;
+                flex-direction: column;
+                /* ainda mantém bloco, mas vamos reposicionar manualmente */
+                align-items: center;
+                padding: 4rem 1.5rem;
+                min-height: 70vh;
+            }
+
+            /* Círculo continua dominante */
+            .hero-left .circle-bg {
+                width: 75vw;
+                height: 75vw;
+                max-width: 400px;
+                max-height: 400px;
+                margin: 0;
+            }
+
+            /* Texto dentro do círculo */
+            .hero-left h1 {
+                font-size: 1.8rem;
+                margin-bottom: 0rem;
             }
 
             .hero-left .desc {
-                font-size: 13px;
+                font-size: 0.8rem;
+                 
             }
+
+            /* Prato */
+            .hero-prato {
+                position: absolute;
+                right: 5%;
+                bottom: -3rem;
+                /* empurra um pouco pra baixo */
+                width: 50vw;
+                /* menor em mobile */
+                max-width: 320px;
+                transform: translateX(-2rem);
+            }
+
+            .hero-prato img.brush {
+                width: 100%;
+                height: auto;
+            }
+
+            .hero-prato img.prato {
+                width: 100%;
+            }
+
+            /* Logo vertical jp */
+            #pere-jp {
+                position: absolute;
+                left: 2rem;
+                bottom: 1rem;
+                width: 60px;
+            }
+
 
             #cardapio {
 
@@ -539,7 +719,7 @@
             }
 
             #sobre .quote {
-                width: 90%;
+                width: 100%;
                 font-size: 1.1rem;
                 padding: 15px 20px;
             }
@@ -552,9 +732,9 @@
 
         /* Celulares pequenos */
         @media (max-width: 480px) {
-           .logo img {
-            width: 60px;
-           }
+            .logo img {
+                width: 60px;
+            }
 
             header nav ul {
                 flex-direction: column;
@@ -562,12 +742,12 @@
             }
 
             .hero-left button {
-                padding: 1% 1.5%;
-                font-size: 1rem;
+                padding: 10px 20px;
+                font-size: 16px;
             }
 
             .hero-left h1 {
-                font-size: 1.8rem;
+                font-size: 26px;
             }
 
             #sobre .quote::before,
