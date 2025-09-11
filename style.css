@@ -648,9 +648,10 @@ a {
     .hero-left .circle-bg {
         width: 75vw;
         height: 75vw;
-        max-width: 400px;
-        max-height: 400px;
+        max-width: 440px;
+        max-height: 440px;
         margin: 0;
+        padding: 1rem;
     }
 
     .hero-left h1 {
@@ -730,10 +731,11 @@ a {
 
     .hero-left button {
         padding: 10px 20px;
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .hero-left h1 {
+        padding: 10px;
         font-size: 26px;
     }
 
